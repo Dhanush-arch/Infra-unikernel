@@ -1,0 +1,7 @@
+.vscode
+.DS_Store
+.terraform*
+terraform.tfstate*
+/node_modules
+/out
+/build
