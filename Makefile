@@ -40,3 +40,20 @@ tf-apply:
 	fi
 	$(PROGRESS) TERRAFORM APPLY
 	terraform apply $(TERRAFORM_FLAGS)
+
+.PHONY: tf-destroy
+tf-destroy:
+	if [ "$$DO_TOKEN" = "" ]; then \
+		echo DO_TOKEN is not set; \
+		exit 1; \
+	fi
+	if [ "$$GRAFANA_CLOUD_USERNAME" = "" ]; then \
+		echo GRAFANA_CLOUD_USERNAME is not set; \
+		exit 1; \
+	fi
+	if [ "$$GRAFANA_CLOUD_PASSWORD" = "" ]; then \
+		echo GRAFANA_CLOUD_PASSWORD is not set; \
+		exit 1; \
+	fi
+	$(PROGRESS) TERRAFORM DESTROY
+	terraform destroy $(TERRAFORM_FLAGS)
